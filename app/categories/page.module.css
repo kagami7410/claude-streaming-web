@@ -1,0 +1,43 @@
+.categoriesPage {
+  width: 100%;
+}
+
+.categoriesPage h1 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
+.categorySection {
+  margin-bottom: 4rem;
+}
+
+.categorySection h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%) 1;
+  display: inline-block;
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .categoriesPage h1 {
+    font-size: 2rem;
+  }
+
+  .videoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}

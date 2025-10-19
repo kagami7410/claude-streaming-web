@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p app/preview)",
+      "Bash(npm run build)",
+      "Bash(claude mcp add --transport http context7 --scope project https://mcp.context7.com/mcp)",
+      "Bash(claude mcp add playwright --scope project cmd /c npx @playwright/mcp@latest)",
+      "Bash(npm test -- Cursor.test.tsx)",
+      "mcp__playwright__browser_take_screenshot"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7"
+  ]
+}

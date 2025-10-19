@@ -1,0 +1,278 @@
+.cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  mix-blend-mode: difference;
+}
+
+.cursorInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.cursorDot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Sizes */
+.small {
+  width: 20px;
+  height: 20px;
+}
+
+.medium {
+  width: 30px;
+  height: 30px;
+}
+
+.large {
+  width: 40px;
+  height: 40px;
+}
+
+.small.hovering {
+  width: 30px;
+  height: 30px;
+}
+
+.medium.hovering {
+  width: 50px;
+  height: 50px;
+}
+
+.large.hovering {
+  width: 60px;
+  height: 60px;
+}
+
+/* Colors */
+.primary .cursorInner,
+.primary.cursorDot {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.accent .cursorInner,
+.accent.cursorDot {
+  background: linear-gradient(135deg, #FFD54F, #FF8E53);
+}
+
+.success .cursorInner,
+.success.cursorDot {
+  background: linear-gradient(135deg, #56ab2f, #a8e063);
+}
+
+.danger .cursorInner,
+.danger.cursorDot {
+  background: linear-gradient(135deg, #FF6B6B, #ee5a6f);
+}
+
+/* Variant: Default */
+.default {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.default.hovering {
+  background: rgba(255, 255, 255, 0.1);
+  border-width: 3px;
+}
+
+.default.hovering .cursorInner {
+  opacity: 0;
+}
+
+/* Variant: Pointer */
+.pointer {
+  border: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pointer.hovering {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.8;
+}
+
+/* Variant: Glow */
+.glow {
+  border: none;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.glow.hovering {
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.8),
+              0 0 60px rgba(102, 126, 234, 0.5),
+              0 0 90px rgba(102, 126, 234, 0.3);
+  animation: glowPulse 1s ease-in-out infinite;
+}
+
+.glow.accent.hovering {
+  box-shadow: 0 0 30px rgba(255, 213, 79, 0.8),
+              0 0 60px rgba(255, 142, 83, 0.5),
+              0 0 90px rgba(255, 142, 83, 0.3);
+}
+
+.glow.success.hovering {
+  box-shadow: 0 0 30px rgba(86, 171, 47, 0.8),
+              0 0 60px rgba(168, 224, 99, 0.5),
+              0 0 90px rgba(168, 224, 99, 0.3);
+}
+
+.glow.danger.hovering {
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.8),
+              0 0 60px rgba(238, 90, 111, 0.5),
+              0 0 90px rgba(238, 90, 111, 0.3);
+}
+
+/* Variant: Ripple */
+.ripple {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.ripple.hovering {
+  border-width: 3px;
+  animation: rotate 2s linear infinite;
+}
+
+.ripple.hovering .cursorInner {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ripple {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  animation: rippleEffect 0.6s ease-out forwards;
+}
+
+/* Variant: Magnetic */
+.magnetic {
+  transition: all 0.15s ease-out;
+  border-width: 3px;
+}
+
+.magnetic.hovering {
+  border-color: rgba(102, 126, 234, 0.8);
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+}
+
+.magnetic.hovering .cursorInner {
+  animation: magneticPulse 1.5s ease-in-out infinite;
+}
+
+/* Variant: Trail */
+.trail {
+  border: none;
+  background: transparent;
+}
+
+.trail.hovering .cursorInner {
+  transform: scale(1.5);
+  animation: trailPulse 1s ease-in-out infinite;
+}
+
+.trailDot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.trailDot.primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.trailDot.accent {
+  background: linear-gradient(135deg, #FFD54F, #FF8E53);
+}
+
+.trailDot.success {
+  background: linear-gradient(135deg, #56ab2f, #a8e063);
+}
+
+.trailDot.danger {
+  background: linear-gradient(135deg, #FF6B6B, #ee5a6f);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rippleEffect {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.5);
+  }
+}
+
+@keyframes magneticPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+}
+
+@keyframes trailPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Hide default cursor when custom cursor is active */
+body:has(.cursor) * {
+  cursor: none !important;
+}
